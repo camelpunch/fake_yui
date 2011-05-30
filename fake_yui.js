@@ -7,13 +7,20 @@ var nodeAPI = function () {
         get: function () {},
         set: function () {},
         removeClass: function () {},
-        addClass: function () {}
+        addClass: function () {},
+        hasClass: function () {}
     };
 },
 
 Y = function (path, Yinstance) {
     Yinstance.namespace = function (name) {
         Yinstance[name] = {};
+    };
+
+    Yinstance.config = {
+        win: {
+            setTimeout: function () {}
+        }
     };
 
     Yinstance.augment = function (obj) {

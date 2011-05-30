@@ -16,6 +16,7 @@ hasNodeAPI = function () {
     var context = {
         'has fake addClass()': hasFake('addClass'),
         'has fake removeClass()': hasFake('removeClass'),
+        'has fake hasClass()': hasFake('hasClass'),
         'has fake on()': hasFake('on'),
         'has fake set()': hasFake('set'),
         'has fake get()': hasFake('get')
@@ -45,6 +46,15 @@ hasYinstanceAPI = function () {
 
             'access allowed to properties': function (topic) {
                 assert.equal(topic.foo, 'bar');
+            }
+        },
+
+        'config': {
+            'win': {
+                topic: function (Y) {
+                    return Y.config.win;
+                },
+                'has fake setTimeout()': hasFake('setTimeout')
             }
         },
 
