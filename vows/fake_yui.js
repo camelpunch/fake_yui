@@ -31,6 +31,17 @@ vows.describe('fakeYUI').addBatch({
                 topic();
                 assert.isTrue(process.moduleCalled);
             }
+        },
+
+        'namespace': {
+            topic: function (Y) {
+                Y.run();
+                return Y.someNamespace;
+            },
+
+            'access allowed to properties': function (topic) {
+                assert.equal(topic.foo, 'bar');
+            }
         }
     },
 

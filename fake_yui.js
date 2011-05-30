@@ -11,6 +11,10 @@ var nodeAPI = function () {
 },
 
 Y = function (path, Yinstance) {
+    Yinstance.namespace = function (name) {
+        Yinstance[name] = {};
+    };
+
     Yinstance.all = function () {
         return nodeAPI();
     };
