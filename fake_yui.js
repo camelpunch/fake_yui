@@ -4,6 +4,7 @@
 var nodeAPI = function () {
     return {
         on: function () {},
+        get: function () {},
         set: function () {},
         removeClass: function () {},
         addClass: function () {}
@@ -13,6 +14,11 @@ var nodeAPI = function () {
 Y = function (path, Yinstance) {
     Yinstance.namespace = function (name) {
         Yinstance[name] = {};
+    };
+
+    Yinstance.augment = function (obj) {
+        obj.publish = function () {};
+        obj.fire = function () {};
     };
 
     Yinstance.all = function () {

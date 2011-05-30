@@ -10,27 +10,31 @@ hasFake = function (method) {
     return function (topic) {
         topic[method]();
     };
-};
+},
 
-vows.describe('fakeYUI').addBatch({
-    'Y module': {
-        topic: fakeYUI.Y('./vows/fixtures/yui_module', {
-            some: 'property'
-        }),
+hasNodeAPI = function () {
+    var context = {
+        'has fake addClass()': hasFake('addClass'),
+        'has fake removeClass()': hasFake('removeClass'),
+        'has fake on()': hasFake('on'),
+        'has fake set()': hasFake('set'),
+        'has fake get()': hasFake('get')
+    };
 
-        'includes passed-in properties': function (topic) {
-            assert.equal(topic.some, 'property');
-        },
+    return context;
+},
 
-        'run': {
+hasYinstanceAPI = function () {
+    var context = {
+        'augment': {
             topic: function (Y) {
-                return Y.run;
+                var obj = {};
+                Y.augment(obj);
+                return obj;
             },
 
-            'runs module as script': function (topic) {
-                topic();
-                assert.isTrue(process.moduleCalled);
-            }
+            'adds fake publish() to an object': hasFake('publish'),
+            'adds fake fire() to an object': hasFake('fire')
         },
 
         'namespace': {
@@ -41,27 +45,6 @@ vows.describe('fakeYUI').addBatch({
 
             'access allowed to properties': function (topic) {
                 assert.equal(topic.foo, 'bar');
-            }
-        }
-    },
-
-    'Y script': {
-        topic: fakeYUI.Y('./vows/fixtures/yui_script', {
-            some: 'property'
-        }),
-
-        'includes passed-in properties': function (topic) {
-            assert.equal(topic.some, 'property');
-        },
-
-        'run': {
-            topic: function (Y) {
-                return Y.run;
-            },
-
-            'runs script at provided path when executed': function (topic) {
-                topic();
-                assert.isTrue(process.scriptCalled);
             }
         },
 
@@ -80,10 +63,7 @@ vows.describe('fakeYUI').addBatch({
                 return Y.one('#bob');
             },
 
-            'has fake addClass()': hasFake('addClass'),
-            'has fake removeClass()': hasFake('removeClass'),
-            'has fake on()': hasFake('on'),
-            'has fake set()': hasFake('set')
+            'has node API': hasNodeAPI()
         },
 
         'all': {
@@ -91,28 +71,67 @@ vows.describe('fakeYUI').addBatch({
                 return Y.all('#bob');
             },
 
-            'has fake addClass()': hasFake('addClass'),
-            'has fake removeClass()': hasFake('removeClass'),
-            'has fake on()': hasFake('on'),
-            'has fake set()': hasFake('set')
+            'has node API': hasNodeAPI()
+        }
+    };
+
+    return context;
+};
+
+vows.describe('fakeYUI').addBatch({
+    'Y module': {
+        topic: fakeYUI.Y('./vows/fixtures/yui_module', {
+            some: 'property'
+        }),
+
+        'includes passed-in properties': function (topic) {
+            assert.equal(topic.some, 'property');
+        },
+
+        'has Y instance API': hasYinstanceAPI(),
+
+        'run': {
+            topic: function (Y) {
+                return Y.run;
+            },
+
+            'runs module as script': function (topic) {
+                topic();
+                assert.isTrue(process.moduleCalled);
+            }
+        }
+    },
+
+    'Y script': {
+        topic: fakeYUI.Y('./vows/fixtures/yui_script', {
+            some: 'property'
+        }),
+
+        'includes passed-in properties': function (topic) {
+            assert.equal(topic.some, 'property');
+        },
+
+        'has Y instance API': hasYinstanceAPI(),
+
+        'run': {
+            topic: function (Y) {
+                return Y.run;
+            },
+
+            'runs script at provided path when executed': function (topic) {
+                topic();
+                assert.isTrue(process.scriptCalled);
+            }
         }
     },
 
     'node': {
         topic: fakeYUI.node(),
-
-        'has fake addClass()': hasFake('addClass'),
-        'has fake removeClass()': hasFake('removeClass'),
-        'has fake on()': hasFake('on'),
-        'has fake set()': hasFake('set')
+        'has node API': hasNodeAPI()
     },
 
     'nodeList': {
         topic: fakeYUI.nodeList(),
-
-        'has fake addClass()': hasFake('addClass'),
-        'has fake removeClass()': hasFake('removeClass'),
-        'has fake on()': hasFake('on'),
-        'has fake set()': hasFake('set')
+        'has node API': hasNodeAPI()
     }
 }).exportTo(module);
