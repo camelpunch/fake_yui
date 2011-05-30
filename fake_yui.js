@@ -35,7 +35,7 @@ Y = function (path, Yinstance) {
     };
 
     process.YUI.add = function () {
-        var mod = arguments[arguments.length - 1];
+        var mod = arguments[1];
 
         // special 'run' method on Y, for 'running' the module under test
         Yinstance.run = function () {
