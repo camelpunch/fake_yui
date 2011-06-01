@@ -2,13 +2,19 @@
 "use strict";
 
 var nodeAPI = function () {
+    var chainable = function () {
+        return this;
+    };
+
     return {
         on: function () {},
-        get: function () {},
-        set: function () {},
-        removeClass: function () {},
-        addClass: function () {},
-        hasClass: function () {}
+        one: function () {},
+        hasClass: function () {},
+
+        get: chainable,
+        set: chainable,
+        removeClass: chainable,
+        addClass: chainable
     };
 },
 

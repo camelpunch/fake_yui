@@ -12,14 +12,22 @@ hasFake = function (method) {
     };
 },
 
+hasChainable = function (method) {
+    return function (topic) {
+        assert.equal(topic[method](), topic);
+    };
+},
+
 hasNodeAPI = function () {
     var context = {
-        'has fake addClass()': hasFake('addClass'),
-        'has fake removeClass()': hasFake('removeClass'),
+        'has chainable addClass()': hasChainable('addClass'),
+        'has chainable removeClass()': hasChainable('removeClass'),
+        'has chainable set()': hasChainable('set'),
+        'has chainable get()': hasChainable('get'),
+
         'has fake hasClass()': hasFake('hasClass'),
         'has fake on()': hasFake('on'),
-        'has fake set()': hasFake('set'),
-        'has fake get()': hasFake('get')
+        'has fake one()': hasFake('one')
     };
 
     return context;
