@@ -26,7 +26,9 @@ Y = function (path, Yinstance) {
     Yinstance.config = {
         win: {
             setTimeout: function () {}
-        }
+        },
+
+        doc: nodeAPI()
     };
 
     Yinstance.augment = function (obj) {
@@ -77,7 +79,13 @@ node = function () {
 },
 
 nodeList = function () {
-    return nodeAPI();
+    var api = nodeAPI();
+
+    api.item = function () {};
+    api.indexOf = function () {};
+    api.size = function () {};
+
+    return api;
 };
 
 module.exports.Y = Y;

@@ -63,6 +63,14 @@ hasYinstanceAPI = function () {
                     return Y.config.win;
                 },
                 'has fake setTimeout()': hasFake('setTimeout')
+            },
+
+            'doc': {
+                topic: function (Y) {
+                    return Y.config.doc;
+                },
+
+                'has node API': hasNodeAPI()
             }
         },
 
@@ -150,6 +158,9 @@ vows.describe('fakeYUI').addBatch({
 
     'nodeList': {
         topic: fakeYUI.nodeList(),
-        'has node API': hasNodeAPI()
+        'has node API': hasNodeAPI(),
+        'has fake item()': hasFake('item'),
+        'has fake indexOf()': hasFake('indexOf'),
+        'has fake size()': hasFake('size')
     }
 }).exportTo(module);
