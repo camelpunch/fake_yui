@@ -9,6 +9,7 @@ var nodeAPI = function () {
     return {
         on: function () {},
         one: function () {},
+        all: function () {},
         hasClass: function () {},
 
         get: chainable,
@@ -81,6 +82,7 @@ node = function () {
 nodeList = function () {
     var api = nodeAPI();
 
+    api.all = undefined;
     api.item = function () {};
     api.indexOf = function () {};
     api.size = function () {};

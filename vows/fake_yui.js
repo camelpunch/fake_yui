@@ -18,6 +18,29 @@ hasChainable = function (method) {
     };
 },
 
+hasNodeListAPI = function () {
+    var context = {
+        'has chainable addClass()': hasChainable('addClass'),
+        'has chainable removeClass()': hasChainable('removeClass'),
+        'has chainable set()': hasChainable('set'),
+        'has chainable get()': hasChainable('get'),
+
+        'has fake hasClass()': hasFake('hasClass'),
+        'has fake on()': hasFake('on'),
+        'has fake one()': hasFake('one'),
+
+        'has fake item()': hasFake('item'),
+        'has fake indexOf()': hasFake('indexOf'),
+        'has fake size()': hasFake('size'),
+
+        'does not have fake all()': function (nodeList) {
+            assert.equal(nodeList.all, undefined);
+        }
+    };
+
+    return context;
+},
+
 hasNodeAPI = function () {
     var context = {
         'has chainable addClass()': hasChainable('addClass'),
@@ -27,7 +50,9 @@ hasNodeAPI = function () {
 
         'has fake hasClass()': hasFake('hasClass'),
         'has fake on()': hasFake('on'),
-        'has fake one()': hasFake('one')
+        'has fake one()': hasFake('one'),
+
+        'has fake all()': hasFake('all')
     };
 
     return context;
@@ -158,9 +183,6 @@ vows.describe('fakeYUI').addBatch({
 
     'nodeList': {
         topic: fakeYUI.nodeList(),
-        'has node API': hasNodeAPI(),
-        'has fake item()': hasFake('item'),
-        'has fake indexOf()': hasFake('indexOf'),
-        'has fake size()': hasFake('size')
+        'has nodeList API': hasNodeListAPI()
     }
 }).exportTo(module);
