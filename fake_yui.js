@@ -21,7 +21,18 @@ var nodeAPI = function () {
 
 Y = function (path, Yinstance) {
     Yinstance.namespace = function (name) {
-        Yinstance[name] = {};
+        var list = name.split('.'),
+
+        addToObject = function (obj, list) {
+            var item = list.shift();
+
+            if (item) {
+                obj[item] = {};
+                addToObject(obj[item], list);
+            }
+        }
+
+        addToObject(Yinstance, list);
     };
 
     Yinstance.config = {

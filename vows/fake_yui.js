@@ -72,13 +72,26 @@ hasYinstanceAPI = function () {
         },
 
         'namespace': {
-            topic: function (Y) {
-                Y.run();
-                return Y.someNamespace;
+            'without separator': {
+                topic: function (Y) {
+                    Y.run();
+                    return Y.someNamespace;
+                },
+
+                'access allowed to properties': function (topic) {
+                    assert.equal(topic.foo, 'bar');
+                }
             },
 
-            'access allowed to properties': function (topic) {
-                assert.equal(topic.foo, 'bar');
+            'with separator': {
+                topic: function (Y) {
+                    Y.run();
+                    return Y.some.name.space;
+                },
+
+                'access allowed to properties': function (topic) {
+                    assert.equal(topic.foo, 'bar');
+                }
             }
         },
 
