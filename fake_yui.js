@@ -11,6 +11,7 @@ var nodeAPI = function () {
         one: function () {},
         all: function () {},
         hasClass: function () {},
+        append: function () {},
 
         get: chainable,
         set: chainable,

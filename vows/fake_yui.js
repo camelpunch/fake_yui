@@ -28,6 +28,7 @@ hasNodeListAPI = function () {
         'has fake hasClass()': hasFake('hasClass'),
         'has fake on()': hasFake('on'),
         'has fake one()': hasFake('one'),
+        'has fake append()': hasFake('append'),
 
         'has fake item()': hasFake('item'),
         'has fake indexOf()': hasFake('indexOf'),
@@ -51,6 +52,7 @@ hasNodeAPI = function () {
         'has fake hasClass()': hasFake('hasClass'),
         'has fake on()': hasFake('on'),
         'has fake one()': hasFake('one'),
+        'has fake append()': hasFake('append'),
 
         'has fake all()': hasFake('all')
     };
