@@ -59,7 +59,7 @@ Y = function (path, Yinstance) {
 
     Yinstance.on = function () {};
 
-    process.YUI = function () {
+    global.YUI = function () {
         return {
             use: function () {
                 var application = arguments[arguments.length - 1];
@@ -72,7 +72,7 @@ Y = function (path, Yinstance) {
         };
     };
 
-    process.YUI.add = function () {
+    global.YUI.add = function () {
         var mod = arguments[1];
 
         // special 'run' method on Y, for 'running' the module under test
