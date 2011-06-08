@@ -11,12 +11,16 @@ var nodeAPI = function () {
         one: function () {},
         all: function () {},
         hasClass: function () {},
-        append: function () {},
+        ancestor: function () {},
+        remove: function () {},
 
         get: chainable,
         set: chainable,
         removeClass: chainable,
-        addClass: chainable
+        addClass: chainable,
+        setStyle: chainable,
+        append: chainable,
+        prepend: chainable
     };
 },
 
@@ -95,9 +99,11 @@ nodeList = function () {
     var api = nodeAPI();
 
     api.all = undefined;
+    api.ancestor = undefined;
     api.item = function () {};
     api.indexOf = function () {};
     api.size = function () {};
+    api.each = function () {};
 
     return api;
 };

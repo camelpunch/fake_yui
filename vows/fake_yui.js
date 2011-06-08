@@ -24,18 +24,25 @@ hasNodeListAPI = function () {
         'has chainable removeClass()': hasChainable('removeClass'),
         'has chainable set()': hasChainable('set'),
         'has chainable get()': hasChainable('get'),
+        'has fake setStyle()': hasChainable('setStyle'),
 
         'has fake hasClass()': hasFake('hasClass'),
         'has fake on()': hasFake('on'),
         'has fake one()': hasFake('one'),
         'has fake append()': hasFake('append'),
+        'has fake remove()': hasFake('remove'),
 
         'has fake item()': hasFake('item'),
         'has fake indexOf()': hasFake('indexOf'),
         'has fake size()': hasFake('size'),
+        'has fake each()': hasFake('each'),
 
         'does not have fake all()': function (nodeList) {
             assert.equal(nodeList.all, undefined);
+        },
+
+        'does not have fake ancestor()': function (nodeList) {
+            assert.equal(nodeList.ancestor, undefined);
         }
     };
 
@@ -48,11 +55,15 @@ hasNodeAPI = function () {
         'has chainable removeClass()': hasChainable('removeClass'),
         'has chainable set()': hasChainable('set'),
         'has chainable get()': hasChainable('get'),
+        'has chainable append()': hasChainable('append'),
+        'has chainable prepend()': hasChainable('prepend'),
+        'has fake setStyle()': hasChainable('setStyle'),
 
         'has fake hasClass()': hasFake('hasClass'),
         'has fake on()': hasFake('on'),
         'has fake one()': hasFake('one'),
-        'has fake append()': hasFake('append'),
+        'has fake ancestor()': hasFake('ancestor'),
+        'has fake remove()': hasFake('remove'),
 
         'has fake all()': hasFake('all')
     };
