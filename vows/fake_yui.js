@@ -73,10 +73,27 @@ hasNodeAPI = function () {
 
 hasYinstanceAPI = function () {
     var context = {
-        'augment': {
+        'augment a normal object': {
+            topic: function (Y) {
+                var obj = {},
+                newObj = {
+                    key: 'value'
+                };
+                Y.augment(obj, newObj);
+                return obj;
+            },
+
+            'adds just the new object properties': function (obj) {
+                assert.deepEqual(obj, {
+                    key: 'value'
+                });
+            }
+        },
+
+        'augment Y.EventTarget': {
             topic: function (Y) {
                 var obj = {};
-                Y.augment(obj);
+                Y.augment(obj, Y.EventTarget);
                 return obj;
             },
 

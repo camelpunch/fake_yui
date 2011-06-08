@@ -48,9 +48,19 @@ Y = function (path, Yinstance) {
         doc: nodeAPI()
     };
 
-    Yinstance.augment = function (obj) {
-        obj.publish = function () {};
-        obj.fire = function () {};
+    Yinstance.EventTarget = {
+        publish: function () {},
+        fire: function () {}
+    };
+
+    Yinstance.augment = function (destination, source) {
+        var key;
+
+        for (key in source) {
+            if (source.hasOwnProperty(key)) {
+                destination[key] = source[key];
+            }
+        }
     };
 
     Yinstance.all = function () {
