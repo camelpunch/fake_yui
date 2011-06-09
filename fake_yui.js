@@ -16,6 +16,7 @@ sharedAPI = function () {
         set: chainable,
         removeClass: chainable,
         addClass: chainable,
+        toggleClass: chainable,
         setStyle: chainable,
         append: chainable,
         prepend: chainable

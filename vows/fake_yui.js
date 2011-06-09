@@ -20,6 +20,7 @@ hasChainable = function (method) {
 
 hasNodeListAPI = function () {
     var context = {
+        'has chainable toggleClass()': hasChainable('toggleClass'),
         'has chainable addClass()': hasChainable('addClass'),
         'has chainable removeClass()': hasChainable('removeClass'),
         'has chainable set()': hasChainable('set'),
@@ -55,6 +56,7 @@ hasNodeListAPI = function () {
 
 hasNodeAPI = function () {
     var context = {
+        'has chainable toggleClass()': hasChainable('toggleClass'),
         'has chainable addClass()': hasChainable('addClass'),
         'has chainable removeClass()': hasChainable('removeClass'),
         'has chainable set()': hasChainable('set'),
