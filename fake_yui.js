@@ -1,17 +1,15 @@
-/*global module, process, require*/
+/*global global, module, process, require*/
 "use strict";
 
-var nodeAPI = function () {
-    var chainable = function () {
-        return this;
-    };
+var chainable = function () {
+    return this;
+},
 
+sharedAPI = function () {
     return {
         on: function () {},
         one: function () {},
-        all: function () {},
         hasClass: function () {},
-        ancestor: function () {},
         remove: function () {},
 
         get: chainable,
@@ -22,6 +20,27 @@ var nodeAPI = function () {
         append: chainable,
         prepend: chainable
     };
+},
+
+node = function () {
+    var api = sharedAPI();
+
+    api.all = function () {};
+    api.ancestor = function () {};
+    api.reset = chainable;
+
+    return api;
+},
+
+nodeList = function () {
+    var api = sharedAPI();
+
+    api.item = function () {};
+    api.indexOf = function () {};
+    api.size = function () {};
+    api.each = function () {};
+
+    return api;
 },
 
 Y = function (path, Yinstance) {
@@ -35,7 +54,7 @@ Y = function (path, Yinstance) {
                 obj[item] = {};
                 addToObject(obj[item], list);
             }
-        }
+        };
 
         addToObject(Yinstance, list);
     };
@@ -45,7 +64,7 @@ Y = function (path, Yinstance) {
             setTimeout: function () {}
         },
 
-        doc: nodeAPI()
+        doc: node()
     };
 
     Yinstance.EventTarget = {
@@ -64,11 +83,11 @@ Y = function (path, Yinstance) {
     };
 
     Yinstance.all = function () {
-        return nodeAPI();
+        return nodeList();
     };
 
     Yinstance.one = function () {
-        return nodeAPI();
+        return node();
     };
 
     Yinstance.on = function () {};
@@ -99,23 +118,6 @@ Y = function (path, Yinstance) {
     require(path);
 
     return Yinstance;
-},
-
-node = function () {
-    return nodeAPI();
-},
-
-nodeList = function () {
-    var api = nodeAPI();
-
-    api.all = undefined;
-    api.ancestor = undefined;
-    api.item = function () {};
-    api.indexOf = function () {};
-    api.size = function () {};
-    api.each = function () {};
-
-    return api;
 };
 
 module.exports.Y = Y;

@@ -43,6 +43,10 @@ hasNodeListAPI = function () {
 
         'does not have fake ancestor()': function (nodeList) {
             assert.equal(nodeList.ancestor, undefined);
+        },
+
+        'does not have fake reset()': function (nodeList) {
+            assert.equal(nodeList.reset, undefined);
         }
     };
 
@@ -57,6 +61,7 @@ hasNodeAPI = function () {
         'has chainable get()': hasChainable('get'),
         'has chainable append()': hasChainable('append'),
         'has chainable prepend()': hasChainable('prepend'),
+        'has chainable reset()': hasChainable('reset'),
         'has fake setStyle()': hasChainable('setStyle'),
 
         'has fake hasClass()': hasFake('hasClass'),
@@ -165,7 +170,7 @@ hasYinstanceAPI = function () {
                 return Y.all('#bob');
             },
 
-            'has node API': hasNodeAPI()
+            'has nodeList API': hasNodeListAPI()
         }
     };
 
