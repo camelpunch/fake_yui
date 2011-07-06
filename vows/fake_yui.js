@@ -25,8 +25,9 @@ hasNodeListAPI = function () {
         'has chainable removeClass()': hasChainable('removeClass'),
         'has chainable set()': hasChainable('set'),
         'has chainable get()': hasChainable('get'),
-        'has fake setStyle()': hasChainable('setStyle'),
+        'has chainable setStyle()': hasChainable('setStyle'),
 
+        'has fake getAttribute()': hasFake('getAttribute'),
         'has fake hasClass()': hasFake('hasClass'),
         'has fake on()': hasFake('on'),
         'has fake one()': hasFake('one'),
@@ -64,8 +65,9 @@ hasNodeAPI = function () {
         'has chainable append()': hasChainable('append'),
         'has chainable prepend()': hasChainable('prepend'),
         'has chainable reset()': hasChainable('reset'),
-        'has fake setStyle()': hasChainable('setStyle'),
+        'has chainable setStyle()': hasChainable('setStyle'),
 
+        'has fake getAttribute()': hasFake('getAttribute'),
         'has fake hasClass()': hasFake('hasClass'),
         'has fake on()': hasFake('on'),
         'has fake one()': hasFake('one'),

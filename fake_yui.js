@@ -11,6 +11,7 @@ sharedAPI = function () {
         one: function () {},
         hasClass: function () {},
         remove: function () {},
+        getAttribute: function () {},
 
         get: chainable,
         set: chainable,
