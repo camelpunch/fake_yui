@@ -30,6 +30,7 @@ node = function () {
     api.all = function () {};
     api.ancestor = function () {};
     api.reset = chainable;
+    api.empty = chainable;
 
     return api;
 },
@@ -41,6 +42,7 @@ nodeList = function () {
     api.indexOf = function () {};
     api.size = function () {};
     api.each = function () {};
+    api.empty = function () {};
 
     return api;
 },
