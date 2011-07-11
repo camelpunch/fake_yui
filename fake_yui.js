@@ -20,7 +20,9 @@ sharedAPI = function () {
         toggleClass: chainable,
         setStyle: chainable,
         append: chainable,
-        prepend: chainable
+        prepend: chainable,
+        show: chainable,
+        hide: chainable
     };
 },
 
@@ -29,8 +31,10 @@ node = function () {
 
     api.all = function () {};
     api.ancestor = function () {};
+    api.next = function () {};
     api.reset = chainable;
     api.empty = chainable;
+    api.setContent = chainable;
 
     return api;
 },
@@ -43,6 +47,7 @@ nodeList = function () {
     api.size = function () {};
     api.each = function () {};
     api.empty = function () {};
+    api.setContent = function () {};
 
     return api;
 },
