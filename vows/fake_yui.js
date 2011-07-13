@@ -82,6 +82,9 @@ hasNodeAPI = function () {
         'has fake ancestor()': hasFake('ancestor'),
         'has fake remove()': hasFake('remove'),
         'has fake next()': hasFake('next'),
+        'has fake getContent()': hasFake('getContent'),
+        'has fake setData()': hasFake('setData'),
+        'has fake getData()': hasFake('getData'),
 
         'has fake all()': hasFake('all')
     };
@@ -148,7 +151,8 @@ hasYinstanceAPI = function () {
                 topic: function (Y) {
                     return Y.config.win;
                 },
-                'has fake setTimeout()': hasFake('setTimeout')
+                'has fake setTimeout()': hasFake('setTimeout'),
+                'has fake clearTimeout()': hasFake('clearTimeout')
             },
 
             'doc': {

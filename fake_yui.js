@@ -35,6 +35,9 @@ node = function () {
     api.reset = chainable;
     api.empty = chainable;
     api.setContent = chainable;
+    api.getContent = function () {};
+    api.setData = function () {};
+    api.getData = function () {};
 
     return api;
 },
@@ -70,7 +73,8 @@ Y = function (path, Yinstance) {
 
     Yinstance.config = {
         win: {
-            setTimeout: function () {}
+            setTimeout: function () {},
+            clearTimeout: function () {}
         },
 
         doc: node()
